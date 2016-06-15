@@ -35,7 +35,7 @@ class ErrorHandler(object):
                 res_mod = pkg_resources.get_distribution(module)
                 if res_mod is not None:
                     resolved[module] = res_mod.version
-            except pkg_resources.DistributionNotFound:
+            except (pkg_resources.DistributionNotFound, pkg_resources.RequirementParseError):
                 pass
 
         return resolved
